@@ -100,12 +100,13 @@ static NSDictionary *_luanchOptions=nil;
     uint32_t accessId = 123456;
     NSString* accessKey = @"ABCDE";
 
-    if ([self settingForKey:@"XGPushAccessID"]) {
-        accessId = [[self settingForKey:@"XGPushAccessID"] intValue];
+    
+    if ([self.commandDelegate.settings valueForKey:@"XGPushAccessID"]) {
+        accessId = [[self.commandDelegate.settings valueForKey:@"XGPushAccessID"] intValue];
     }
 
-    if ([self settingForKey:@"XGPushAccessKey"]) {
-        accessKey = [[self settingForKey:@"XGPushAccessKey"]];
+    if ([self.commandDelegate.settings valueForKey:@"XGPushAccessKey"]) {
+        accessKey = [[self.commandDelegate.settings valueForKey:@"XGPushAccessKey"] string];
     }
 
     [self startApp:accessId key:accessKey];
